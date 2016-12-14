@@ -1,0 +1,40 @@
+# OSX leaves these everywhere on SMB shares
+._*
+
+# OSX trash
+.DS_Store
+
+# Vscode files
+.vscode
+
+# Emacs save files
+*~
+\#*\#
+.\#*
+
+# Vim-related files
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# Files that should not be added/committed to dotfiles
+/.emacs.d/ac-comphist.dat
+/.emacs.d/auto-save-list
+/.emacs.d/backups
+/.emacs.d/elpa
+/.emacs.d/env-config.el
+/.emacs.d/frame-geometry
+/.emacs.d/ido.last
+/.emacs.d/projectile-bookmarks.eld
+/.emacs.d/history
+/.emacs.d/recentf
+/.gitconfig
+/.gitignore_global
+/.hgrc
+/.gnupg
+/.gpg
+/.ssh
+/.irssi
+/.zshrc-env-config
