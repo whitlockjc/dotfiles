@@ -30,6 +30,7 @@ Session.vim
 /.emacs.d/projectile-bookmarks.eld
 /.emacs.d/history
 /.emacs.d/recentf
+/.emacs.d/smex
 /.gitconfig
 /.gitignore_global
 /.hgrc

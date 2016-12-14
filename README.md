@@ -3,8 +3,8 @@
 The purpose of this repository is to store my dotfiles and OS agnostic tooling configurations.  As you well know, the
 majority of how you configure your tools is the same across different systems other than some minor environmental
 differences.  Where this is the case, like with emacs and my zsh, I have extracted the
-_environment-specific configuration_ into a convention-based approach where a file is sourced to gather the
-environment-specific configuration.  Where these files are necessary are documented below.
+_environment-specific configuration_ into a convention-based approach where a file is sourced to gather this
+information.  Where these files are necessary are documented below.
 
 ## emacs
 
