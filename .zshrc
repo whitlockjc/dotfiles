@@ -69,7 +69,7 @@ then
 fi
 
 # NVM
-if [[ $NVM_HOME ]];
+if [ $NVM_HOME ];
 then
     export NVM_DIR="$HOME/.nvm"
 
@@ -80,7 +80,7 @@ fi
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-if [[ $INSIDE_EMACS ]];
+if [ $INSIDE_EMACS ];
 then
     unset zle_bracketed_paste
 fi
