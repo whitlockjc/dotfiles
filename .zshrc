@@ -54,9 +54,9 @@ plugins=(colorize docker git)
 
 # User configuration (Done here to allow for overriding oh-my-zsh configuration)
 
-if [[ -e $HOME/.env-config.sh ]];
+if [[ -e $HOME/.zshrc-env-config ]];
 then
-   source $HOME/.env-config.sh
+   source $HOME/.zshrc-env-config
 fi
 
 source $ZSH/oh-my-zsh.sh
