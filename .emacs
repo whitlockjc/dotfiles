@@ -22,7 +22,7 @@
 (load-file (concat user-emacs-directory "env-config.el"))
 
 ;; Set PATH to include items installed by Homebrew/NPM/...
-(setenv "PATH" (concat env-config-path (getenv "PATH")))
+(setenv "PATH" (concat env-config-path ":" (getenv "PATH")))
 (setq exec-path (split-string (getenv "PATH") ":"))
 
 ;; Add MELPA to the package repositories and refresh
@@ -90,10 +90,13 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;; Load the desired theme
-(if (window-system)
-    (load-theme 'atom-one-dark t)
-  (load-theme 'atom-dark t))
+;; Load the desired themes
+(load-theme 'atom-one-dark t t)
+(load-theme 'atom-dark t t)
+
+(if window-system
+    (enable-theme 'atom-one-dark)
+  (enable-theme 'atom-dark))
 
 ;; Emacs configurations (Order matters)
 (setq configs-list
