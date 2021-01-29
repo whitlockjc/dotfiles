@@ -27,8 +27,9 @@
 
 ;; Add MELPA to the package repositories and refresh
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
 
 (package-initialize)
 
@@ -59,7 +60,7 @@
         guide-key
         ibuffer-projectile
         ido-at-point
-        ido-ubiquitous
+        ido-completing-read+
 	ido-vertical-mode
 	js2-mode
 	js2-refactor
