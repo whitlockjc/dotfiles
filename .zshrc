@@ -50,11 +50,11 @@ HYPHEN_INSENSITIVE="true"
 # Add wisely, as too many plugins slow down shell startup.
 #
 # Interesting: emacs golang tmux
-plugins=(colorize docker git)
+plugins=(colorize docker git golang)
 
 # User configuration (Done here to allow for overriding oh-my-zsh configuration)
 
-if [[ -e $HOME/.zshrc-env-config ]];
+if [ -e $HOME/.zshrc-env-config ];
 then
    source $HOME/.zshrc-env-config
 fi
@@ -62,11 +62,9 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
-
-if [[ `uname` == 'Darwin' ]];
-then
-    alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
-fi
+alias emacs="emacsclient -t"
+alias emacsw="emacsclient -c -a emacs"
+alias ls="ls --color=auto"
 
 # NVM
 if [ $NVM_HOME ];
@@ -74,7 +72,21 @@ then
     export NVM_DIR="$HOME/.nvm"
 
     . "$NVM_HOME/nvm.sh"
+
+    export NODE_PATH=$NODE_PATH:`npm root -g`
 fi
+
+# iTerm2
+export ITERM2_SQUELCH_MARK=1
+
+if [ -f "${HOME}/.iterm2_shell_integration.zsh" ]; then
+    source "${HOME}/.iterm2_shell_integration.zsh"
+fi
+
+iterm2_print_user_vars() {
+    UPTIME=$(uptime | sed 's/^.*up//' | sed 's/,//g' | tr -s ' ' | sed 's/ [0-9][0-9]* users .*//' | awk '{split($0,a,":"); if (length(a) == 2) {print a[1]" hours "a[2]" mins"} else {print $0}}')
+    iterm2_set_user_var uptime ${UPTIME}
+}
 
 # Terminal information
 export LANG=en_US.UTF-8
@@ -86,3 +98,22 @@ then
 fi
 
 export TERM=xterm-256color
+
+# Perl support
+PATH="${HOME}/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="${HOME}/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="${HOME}/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"${HOME}/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=${HOME}/perl5"; export PERL_MM_OPT;
+
+# Google Cloud SDK Support
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "${GCLOUD_SDK}/path.zsh.inc" ]; then
+  source "${GCLOUD_SDK}/path.zsh.inc"
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "${GCLOUD_SDK}/completion.zsh.inc" ]; then
+  source "${GCLOUD_SDK}/completion.zsh.inc"
+fi
+
