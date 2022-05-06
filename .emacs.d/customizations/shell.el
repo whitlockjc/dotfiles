@@ -13,11 +13,12 @@
 (add-hook 'term-exec-hook 'oleh-term-exec-hook)
 
 ;; Don't ask me for my shell
-(defvar my-term-shell env-config-shell)
+(when (boundp 'env-config-path)
+  (defvar my-term-shell env-config-shell)
 
-(defadvice ansi-term (before force-bash)
-  (interactive (list my-term-shell)))
-(ad-activate 'ansi-term)
+  (defadvice ansi-term (before force-bash)
+    (interactive (list my-term-shell)))
+  (ad-activate 'ansi-term))
 
 ;; Make it where copy/paste work in ansi-term
 (eval-after-load "term"

@@ -19,16 +19,19 @@
 (setq is-mac (equal system-type 'darwin))
 
 ;; Load environment-specific configuration
-(load-file (concat user-emacs-directory "env-config.el"))
+(setq env-config-file (concat user-emacs-directory "env-config.el"))
+(when (file-exists-p env-config-file)
+  (load-file (concat user-emacs-directory "env-config.el")))
 
 ;; Set PATH to include items installed by Homebrew/NPM/...
-(setenv "PATH" (concat env-config-path ":" (getenv "PATH")))
-(setq exec-path (split-string (getenv "PATH") ":"))
+(when (boundp 'env-config-path)
+  (setenv "PATH" (concat env-config-path ":" (getenv "PATH")))
+  (setq exec-path (split-string (getenv "PATH") ":")))
 
 ;; Add MELPA to the package repositories and refresh
 (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 
 (package-initialize)
@@ -46,7 +49,6 @@
 	atom-one-dark-theme
         auto-complete
 	coffee-mode
-	dakrone-theme
 	diff-hl
 	dockerfile-mode
         editorconfig

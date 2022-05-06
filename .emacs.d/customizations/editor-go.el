@@ -1,7 +1,8 @@
 ;;; editor-go.el --- Custom Go editor configuration/settings -*- lexical-binding: t; -*-
 
-(setenv "GOPATH" env-config-gopath)
-(setenv "GOROOT" env-config-goroot)
+(when (boundp 'env-config-path)
+  (setenv "GOPATH" env-config-gopath)
+  (setenv "GOROOT" env-config-goroot))
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 

@@ -20,6 +20,7 @@ Session.vim
 .netrwhist
 
 # Files that should not be added/committed to dotfiles
+/.emacs.d/abbrev_defs
 /.emacs.d/ac-comphist.dat
 /.emacs.d/auto-save-list
 /.emacs.d/backups
@@ -33,6 +34,7 @@ Session.vim
 /.emacs.d/places
 /.emacs.d/recentf
 /.emacs.d/smex
+/.emacs.d/transient/
 /.gitconfig
 /.gitignore_global
 /.hgrc
